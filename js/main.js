@@ -1,4 +1,4 @@
-const API_URL = "https://jsonplaceholder.typicode.com/users"
+const API_URL = "https://dummyjson.com/users"
 
 const postWrapper = document.querySelector(".post-wrapper")
 const prodactById = document.querySelector(".prodact-more-btn")
@@ -16,7 +16,7 @@ async function fetchData(api) {
     let data = await fetch(api)
     data
         .json()
-        .then(res => createCard(res))
+        .then(res => createCard(res.users))
         .catch(err => console.log(err))
 }
 fetchData(API_URL)
@@ -29,8 +29,8 @@ function createCard(data) {
         card.className = "col-3"
         card.innerHTML = `
         <div class="card">
-            <img class="post__img" src="./images/mountain.png" alt="dksa">
-            <h4 class="post__h4">${post.name}</h4>
+            <img class="post__img" src="${post.image}" alt="">
+            <h4 class="post__h4">${post.firstName}</h4>
             
             <div class="post__city">
                 <img class="city__svg" src="./images/city.svg" alt="fw">
